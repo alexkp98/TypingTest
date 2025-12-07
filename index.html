@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Speed Test</title>
+
+    <!-- CSS Import -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <h1 id="paragraph">Paragraph</h1> -->
+    <div class="container">
+      <h1>Typing Speed Test</h1>
+      <p class="quote" id="quote">Loading</p>
+      <textarea
+        name="input"
+        id="input"
+        class="input"
+        placeholder="start typing here..."
+        onpaste="return false"
+        oncopy="return false"
+        oncut="return false"
+      ></textarea>
+      <div class="stats">
+        <p><strong>WPM:</strong> <span id="wpm">0</span></p>
+        <p><strong>Accuracy:</strong> <span id="accuracy">0</span></p>
+        <p><strong>Time:</strong> <span id="time">0</span>s</p>
+      </div>
+      <button class="btn reset">Try again</button>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
