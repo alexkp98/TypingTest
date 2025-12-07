@@ -4,6 +4,7 @@ const wpmEl = document.getElementById("wpm");
 const accuracyEl = document.getElementById("accuracy");
 const timeEl = document.getElementById("time");
 const resetBtn = document.querySelector(".reset");
+const shareBtn = document.getElementById("share-btn");
 
 let paragraph = "";
 let startTime;
@@ -48,8 +49,11 @@ function loadQuotes() {
   inputEl.style.color = "";
   inputEl.style.cursor = "text";
   inputEl.title = "";
+
   resetStats();
   document.querySelector(".container").classList.remove("celebrating");
+
+  shareBtn.classList.add("hidden");
 
   paragraph = getRandomQuote();
   paragraphEl.textContent = paragraph;
@@ -141,6 +145,7 @@ function finishTest() {
   wpmEl.textContent += " ⭐";
   accuracyEl.textContent = "100 ⭐";
   document.querySelector(".container").classList.add("celebrating");
+  shareBtn.classList.remove("hidden");
 }
 
 function protectTypingTest() {
@@ -196,6 +201,29 @@ inputEl.addEventListener("input", () => {
 });
 
 resetBtn.addEventListener("click", loadQuotes);
+
+shareBtn.addEventListener("click", () => {
+  const wpm = wpmEl.textContent;
+  const acc = accuracyEl.textContent;
+  const time = timeEl.textContent;
+  const text = `My typing test result:\n\nWPM: ${wpm}\nAccuracy: ${acc}%\nTime: ${time}s`;
+
+  if (navigator.share) {
+    navigator
+      .share({
+        title: "Typing Speed Test Result",
+        text,
+        url: window.location.href,
+      })
+      .catch(() => {});
+  } else {
+    alert(
+      "Sharing not supported on this browser.\n\nResult:\n" +
+        text +
+        "\n\nYou can also take a screenshot and share it."
+    );
+  }
+});
 
 window.addEventListener("DOMContentLoaded", () => {
   protectTypingTest();
