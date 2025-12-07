@@ -4,24 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Typing Speed Test</title>
-
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️</text></svg>"
+    />
     <!-- CSS Import -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- <h1 id="paragraph">Paragraph</h1> -->
     <div class="container">
       <h1>Typing Speed Test</h1>
       <p class="quote" id="quote">Loading</p>
-      <textarea
-        name="input"
+
+      <!-- ✅ CHANGE THIS: textarea → contenteditable div -->
+      <div
         id="input"
         class="input"
+        contenteditable="true"
+        spellcheck="false"
         placeholder="start typing here..."
         onpaste="return false"
         oncopy="return false"
         oncut="return false"
-      ></textarea>
+      ></div>
+
       <div class="stats">
         <p><strong>WPM:</strong> <span id="wpm">0</span></p>
         <p><strong>Accuracy:</strong> <span id="accuracy">0</span></p>
